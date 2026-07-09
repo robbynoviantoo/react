@@ -12,7 +12,7 @@ const Home = async () => {
 
   return (
     <>
-    {/* <Hero /> */}
+    <Hero />
     <About />
     </>
   )

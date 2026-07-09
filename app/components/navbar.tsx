@@ -10,9 +10,9 @@ const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false)
 
     return (
-        <div className=' w-full py-2  text-black'>
+        <div className=' w-full py-2 text-black'>
             <div className='max-w-7xl px-4 mx-auto'>
-                <div className='hidden max-w-7xl mx-auto md:flex justify-between items-center'>
+                <div className='hidden max-w-7xl mx-auto lg:flex justify-between items-center'>
                     <div className='flex items-center bg gap-20'>
                         <Link href={'/'} className='flex items-center gap-2'>
                             <img src="/logo.svg" alt="logo" />
@@ -31,10 +31,13 @@ const Navbar = () => {
                         <Link className='border px-6 py-2 rounded-full border-[#E2E2E2]' href={'/login'}>Contact</Link>
                     </div>
                 </div>
-                <div className='flex  max-w-7xl mx-auto md:hidden justify-between items-center'>
-                    <div>LOGO</div>
+                <div className='flex max-w-7xl mx-auto lg:hidden justify-between items-center'>
+                    <Link href={'/'} className='flex items-center gap-2'>
+                        <img src="/logo.svg" alt="logo" />
+                        <DegularText className='text-3xl font-semibold'>Olvera</DegularText>
+                    </Link>
                     <button className='z-52 cursor-pointer' onClick={() => setIsOpen(!isOpen)}>
-                        {isOpen ? <X /> : <Menu />}
+                        {isOpen ? <X width={32} height={32} /> : <Menu width={32} height={32} />}
                     </button>
                 </div>
                 {/* Overlay background */}

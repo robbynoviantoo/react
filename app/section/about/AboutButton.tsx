@@ -12,17 +12,17 @@ export const AboutButton = () => {
             link: '#',
             content: [
                 {
-                    img: '/olvera-1.png',
+                    img: '/about/1-1.svg',
                     title: 'Automated Interview Scheduling',
                     desc: 'Save time by automating interview scheduling and coordination with candidates.',
                 },
                 {
-                    img: '/olvera-2.png',
+                    img: '/about/1-2.svg',
                     title: 'Candidate Management',
                     desc: 'Track and organize candidates efficiently throughout the hiring process.',
                 },
                 {
-                    img: '/olvera-3.png',
+                    img: '/about/1-3.svg',
                     title: 'Analytics Dashboard',
                     desc: 'Monitor recruitment performance with real-time analytics.',
                 },
@@ -71,13 +71,13 @@ export const AboutButton = () => {
 
 
     return (
-        <div className='flex flex-col gap-10'>
-            <div className='flex items-end justify-between gap-10'>
-                <div className='w-1/2 max-w-md flex flex-col gap-2'>
+        <div className='flex flex-col gap-12'>
+            <div className='flex flex-col md:flex-row items-end justify-between gap-10'>
+                <div className='w-full md:w-1/2 max-w-md flex flex-col gap-2'>
                     <h1 className='text-[clamp(2rem,5vw,2.5rem)] font-semibold'>Powerful tools built to perform seamlessly.</h1>
                     <p>Boost productivity with connected, efficient solutions.</p>
                 </div>
-                <div className='w-1/2 bg-[#848484]/4 rounded-md'>
+                <div className='w-2/3 mx-auto md:mx-0  md:w-1/2 bg-[#848484]/4 rounded-md'>
                     <ul className='flex gap-2 justify-between p-1'>
                         {aboutNav.map((item) => {
                             return (
@@ -94,11 +94,14 @@ export const AboutButton = () => {
                     </ul>
                 </div>
             </div>
-            <div className='flex justify-between '>
+            <div className='flex flex-col md:flex-row p-4 md:p-0 justify-between gap-4 md:gap-12'>
                 {activeContent?.content.map((item) => (
-                    <div key={item.title}><img src={item.img} alt={item.title} />
-                        <h1>{item.title}</h1>
-                        <p>{item.desc}</p></div>
+                    <div key={item.title} className=' flex-1 '>
+                        <div className='flex flex-col gap-2 bg-white h-[400px] w-full rounded-2xl relative overflow-hidden'>
+                            <img src={`../${item.img}`} alt={item.title} className='select-none' draggable={false} />
+                            <span className='absolute bottom-6 left-6 right-6 z-10 text-[clamp(1rem,2vw,1rem)]'>{item.desc}</span>
+                        </div>
+                    </div>
                 ))}
             </div>
         </div>

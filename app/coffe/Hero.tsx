@@ -1,5 +1,5 @@
 "use client"
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { DM_Serif_Text } from 'next/font/google'
 import gsap from 'gsap'
 
@@ -69,7 +69,7 @@ const Hero = () => {
         }
 
         window.addEventListener('scroll', handleScroll)
-        
+
         const hero = heroRef.current
         if (hero) {
             hero.addEventListener('mousemove', handleMouseMove)
@@ -85,26 +85,37 @@ const Hero = () => {
         }
     }, [])
 
+    const [isHover, setIsHover] = useState(false);
+
     return (
-        <div 
+        <div
             ref={heroRef}
             className="relative flex-1 flex flex-col justify-between overflow-hidden min-h-[calc(100vh-92px)]"
         >
             {/* Hero Main Content */}
             <div className="relative flex-1 flex flex-col justify-start items-center">
                 {/* Big Title */}
-                <h1 className={`${dmSerif.className} text-[26vw] md:text-[17.5vw] font-normal leading-none select-none text-center tracking-tight z-10`}>
+                <h1 className={`${dmSerif.className} text-[26vw] md:text-[17.5vw] font-normal leading-none select-none md:text-center tracking-tight z-10`}>
                     Vaffiora
                 </h1>
 
                 {/* Subtitle / Description */}
-                <div 
+                <div
                     ref={textRef}
-                    className="w-full max-w-7xl px-6 md:absolute md:top-[40%] z-20 mt-4 md:mt-0 will-change-transform"
+                    className="w-full max-w-7xl px-6 md:absolute md:top-[40%] z-50 mt-4 md:mt-0 will-change-transform"
                 >
-                    <p className="max-w-[280px] text-xs md:text-sm leading-relaxed opacity-90">
-                        Every cup is carefully crafted using premium beans to create a smooth and unforgettable coffee experience.
-                    </p>
+                    <div
+                        className="inline-block"
+                        onMouseEnter={() => setIsHover(true)}
+                        onMouseLeave={() => setIsHover(false)}
+                    >
+                        <p
+                            className={`max-w-[280px] relative z-100 text-sm md:text-md leading-relaxed cursor-pointer ${isHover ? "text-white" : "text-[#5F3E2D]"
+                                }`}
+                        >
+                            Every cup is carefully crafted using premium beans to create a smooth and unforgettable coffee experience.
+                        </p>
+                    </div>
                 </div>
             </div>
 
@@ -121,7 +132,7 @@ const Hero = () => {
             </div>
 
             {/* Foreground People Image */}
-            <div 
+            <div
                 ref={characterRef}
                 className="absolute bottom-[-15px] left-1/2 -translate-x-1/2 w-full max-w-[1400px] h-[55vh] sm:h-[70vh] md:h-[65vh] lg:h-[70vh] xl:h-[65vh] flex justify-center items-end z-10 pointer-events-none will-change-transform"
             >
@@ -132,7 +143,9 @@ const Hero = () => {
                     draggable={false}
                 />
             </div>
+            <div className={`fixed z-30 inset-0 bg-black/30 backdrop-blur-md transition-all duration-300 ${isHover ? "opacity-100 pointer-events-none" : "opacity-0 pointer-events-none"}`} />
         </div>
+
     )
 }
 

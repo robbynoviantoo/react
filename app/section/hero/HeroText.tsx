@@ -1,4 +1,5 @@
 import { DegularText } from '@/app/components/degular'
+import { GetADemoButton } from '@/app/components/getademo'
 import React from 'react'
 
 export const HeroText = () => {
@@ -19,7 +20,7 @@ export const HeroText = () => {
             </h1>
             <p className='text-[clamp(12px,2.5vw,1rem)] text-gray-600'>Empowering companies to connect with talent that drives success.</p>
 
-            <button className='py-3 px-6 rounded-full bg-black text-white mt-4 cursor-pointer border shadow-md hover:shadow-lg'>Get a demo</button>
+            <GetADemoButton href='#' text='Get a demo' />
         </div>
     )
 }
